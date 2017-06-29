@@ -1,0 +1,5 @@
+---
+epel_repoinstaller_url: "http://download.fedoraproject.org/pub/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_gpgkey_url:        "http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+epel_baseurl:           "http://download.fedoraproject.org/pub/epel/{{ ansible_distribution_major_version }}/$basearch"
+

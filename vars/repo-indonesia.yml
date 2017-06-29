@@ -1,0 +1,4 @@
+---
+epel_repoinstaller_url: "http://repo.ugm.ac.id/epel/epel-release-latest-{{ ansible_distribution_major_version }}.noarch.rpm"
+epel_gpgkey_url:        "http://repo.ugm.ac.id/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+epel_baseurl:           "http://repo.ugm.ac.id/epel/{{ ansible_distribution_major_version }}/$basearch"
