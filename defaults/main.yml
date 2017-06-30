@@ -1,5 +1,5 @@
 ---
 # defaults file for adipriyantobpn.repo-epel
 
-repo_location:              indonesia   # available options: international, indonesia, vagrant
+repo_location:              indonesia   # available options: international, indonesia, klog, vagrant
 epel_enabled:               yes

@@ -24,12 +24,14 @@
     yum_repository:
       name: "{{ item.name.lower() }}"
       description: "Extra Packages for Enterprise Linux $releasever - $basearch"
-      baseurl: "{{ item.baseurl }}"
+      mirrorlist: "{{ item.mirrorlist | default(omit) }}"
+      failovermethod: priority
+      baseurl: "{{ item.baseurl | default(omit) }}"
       gpgkey: "{{ epel_gpgkey_url }}"
       gpgcheck: yes
       enabled: "{{ item.enabled }}"
       file: "{{ item.file }}"
       state: present
     with_items:
-      - { name: EPEL        ,file: "epel"      ,enabled: "{{ epel_enabled }}"         ,baseurl: "{{ epel_baseurl }}" }
+      - { name: EPEL        ,file: "epel"      ,enabled: "{{ epel_enabled }}"         ,baseurl: "{{ epel_baseurl | default(omit) }}"    ,mirrorlist: "{{ epel_mirrorlist | default(omit) }}" }
   become: True
