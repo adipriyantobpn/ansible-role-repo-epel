@@ -22,16 +22,15 @@
 
   - name: configure EPEL yum repository
     yum_repository:
-      name: "{{ item.name.lower() }}"
+      name: "{{ item.key.lower() }}"
       description: "Extra Packages for Enterprise Linux $releasever - $basearch"
-      mirrorlist: "{{ item.mirrorlist | default(omit) }}"
+      mirrorlist: "{{ item.value.mirrorlist | default(omit) }}"
       failovermethod: priority
-      baseurl: "{{ item.baseurl | default(omit) }}"
+      baseurl: "{{ item.value.baseurl | default(omit) }}"
       gpgkey: "{{ epel_gpgkey_url }}"
       gpgcheck: yes
-      enabled: "{{ item.enabled }}"
-      file: "{{ item.file }}"
+      enabled: "{{ item.value.enabled }}"
+      file: "{{ item.value.file }}"
       state: present
-    with_items:
-      - { name: EPEL        ,file: "epel"      ,enabled: "{{ epel_enabled }}"         ,baseurl: "{{ epel_baseurl | default(omit) }}"    ,mirrorlist: "{{ epel_mirrorlist | default(omit) }}" }
+    with_dict: "{{ epel_repo }}"
   become: True
